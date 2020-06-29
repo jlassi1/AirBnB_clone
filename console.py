@@ -2,20 +2,23 @@
 """
 """
 import cmd
-import sys
 
 
 class HBNBCommand(cmd.Cmd):
     """ """
-    prompt = '(hbnb)'
+    prompt = "(hbnb) "
 
-    def do__EOF(self, line):
+    def do_EOF(self, line):
         """ """
         return True
 
-    def do__quit(self, line):
+    def do_quit(self, line):
         """ """
         return True
+
+    def emptyline(self):
+        """ """
+        pass
 
 
 if __name__ == '__main':

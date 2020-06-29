@@ -11,7 +11,7 @@ class BaseModel():
         """ """
         if kwargs is not None:
             self.id = str(uuid.uuid4())
-            self.created_at = datetime.now()
+            self.created_at = datetime.utcnow()
             self.updated_at = datetime.now()
             for key, val in kwargs.items():
                 if (key == "created_at" or key == "updated_at"):
@@ -23,7 +23,7 @@ class BaseModel():
             self.created_at = datetime.now()
 
     def __str__(self):
-        """ """
+        """the forma of sting return"""
         return "[{}] ({}) {}".format(
             type(self).__name__,
             self.id,

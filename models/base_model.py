@@ -13,11 +13,11 @@ class BaseModel():
         """ Initialization """
         if kwargs is not None:
             self.id = str(uuid.uuid4())
-            self.created_at = datetime.utcnow()
+            self.created_at = datetime.now()
             self.updated_at = datetime.now()
             for key, val in kwargs.items():
                 if key is not "__class__":
-                    if (key == "created_at" or key == "updated_at"):
+                    if (key is "created_at" or key is "updated_at"):
                         val = datetime.strptime(val,
                                                 "%Y-%m-%dT%H:%M:%S.%f")
                         setattr(self, key, val)

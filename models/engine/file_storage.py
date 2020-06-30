@@ -2,14 +2,27 @@
 """
 python module
 """
-import datetime
 import json
-import os
 from models.base_model import BaseModel
 
+from models.user import User
+from models.state import State
+from models.city import City
+from models.amenity import Amenity
+from models.review import Review
+from models.place import Place
 
 class FileStorage:
     """storage class"""
+    calsss = {
+        "BaseModel": BaseModel,
+        "State": State,
+        "City": City,
+        "Review": Review,
+        "Place": Place,
+        "Amenity": Amenity
+        }
+
     __file_path = "file.json"
     __objects = {}
 
@@ -39,5 +52,5 @@ class FileStorage:
             return
         new_dct = {}
         for key, val in new_obj.items():
-            new_dct[key] = BaseModel(**val)
+            new_dct[key] = FileStorage.calsss(**val)
         self.__objects = new_dct

@@ -3,8 +3,6 @@
 python module
 """
 from models.base_model import BaseModel
-import uuid
-from datetime import datetime
 import models
 
 

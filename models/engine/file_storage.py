@@ -8,15 +8,6 @@ from models.base_model import BaseModel
 
 class FileStorage:
     """storage class"""
-    calsss = {
-        "BaseModel": BaseModel,
-        "State": State,
-        "City": City,
-        "Review": Review,
-        "Place": Place,
-        "Amenity": Amenity
-        }
-
     __file_path = "file.json"
     __objects = {}
 

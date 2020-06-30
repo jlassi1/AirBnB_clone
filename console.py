@@ -6,11 +6,25 @@ import cmd
 from models.base_model import BaseModel
 import shlex
 from models import storage
+from models.user import User
+from models.city import City
+from models.amenity import Amenity
+from models.place import Place
+from models.review import Review
+from models.state import State
 
 
 class HBNBCommand(cmd.Cmd):
     """command interpreter"""
     prompt = "(hbnb) "
+    classs = [
+        "BaseModel",
+        "State",
+        "City",
+        "Place",
+        "Review",
+        "Amenity",
+        "User"]
 
     def do_EOF(self, line):
         """exit the program"""
@@ -30,7 +44,7 @@ class HBNBCommand(cmd.Cmd):
         comm = shlex.split(line)
         if len(line) == 0:
             print('** class name missing **')
-        elif line in "BaseModel":
+        elif line in HBNBCommand.classs:
             new_inst = eval(comm[0])()
             new_inst.save()
             print(new_inst.id)
@@ -42,7 +56,7 @@ class HBNBCommand(cmd.Cmd):
         comm = shlex.split(line)
         if len(comm) == 0:
             print('** class name missing **')
-        elif comm[0] not in "BaseModel":
+        elif comm[0] not in HBNBCommand.classs:
             print("** class doesn't exist **")
         elif len(comm) == 1:
             print("** instance id missing **")

@@ -5,7 +5,7 @@ python module
 import cmd
 from models.base_model import BaseModel
 import shlex
-from models.engine.file_storage import FileStorage
+from models import storage
 
 
 class HBNBCommand(cmd.Cmd):
@@ -62,6 +62,42 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
         elif len(comm) == 1:
             print("** instance id missing **")
+        else:
+            instance = comm[0] + '.' + comm[1]
+            if instance in storage.all():
+                del storage.all()[instance]
+                storage.save()
+            else:
+                print('** no instance found **')
+
+    def do_all(self, line):
+        """ Prints all string representation of all instances """
+        comm = shlex.split(line)
+        list = []
+        for k in storage.all():
+            list.append(k)
+
+    def do_update(self, line):
+        """ Updates an instance based on the class name and id """
+        comm = shlex.split(line)
+        if len(comm) == 0:
+            print("** class name missing **")
+        elif comm[1] not in "BaseModel":
+            print(" ** class doesn't exist **")
+        elif len(comm) == 1:
+            print("** instance id missing **")
+        elif len(comm) == 2:
+            print("** attribute name missing **")
+        elif len(comm) == 3:
+            print("** value missing **")
+        elif instance in storage.all():
+            return
+        else:
+            instance = comm[0] + '.' + comm[1]
+            if instance not in storage.all():
+                print("** no instance found **")
+            else:
+                storage.save()
 
 
 if __name__ == '__main__':

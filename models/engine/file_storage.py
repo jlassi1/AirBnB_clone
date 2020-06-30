@@ -34,7 +34,7 @@ class FileStorage:
         try:
             with open(self.__file_path, 'r') as f:
                 new_obj = json.load(f)
-        except TypeError:
+        except IOError:
             return
         new_dct = {}
         for key, val in new_obj.items():

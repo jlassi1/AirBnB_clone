@@ -84,6 +84,28 @@ class HBNBCommand(cmd.Cmd):
                         print(objs[k])
             else:
                 print("** class doesn't exist **")
+    
+    def do_update(self, line):
+        """ Updates an instance based on the class name and id """
+        comm = shlex.split(line)
+        if len(comm) == 0:
+            print("** class name missing **")
+        elif comm[1] not in "BaseModel":
+            print(" ** class doesn't exist **")
+        elif len(comm) == 1:
+            print("** instance id missing **")
+        elif len(comm) == 2:
+            print("** attribute name missing **")
+        elif len(comm) == 3:
+            print("** value missing **")
+        elif instance in storage.all():
+            return
+        elif instance not in storage.all():
+            instance = comm[0] + '.' + comm[1]
+            print("** no instance found **")
+        else:
+            setattr(storage.all.save()[instance], comm[2], comm[3])
+            storage.all[instance].save()
 
 
 if __name__ == '__main__':

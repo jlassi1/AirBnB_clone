@@ -2,9 +2,9 @@
 import unittest
 from models.base_model import BaseModel
 import uuid
-from datetime import datetime 
+from datetime import datetime
 
- 
+
 class TestBaseModel(unittest.TestCase):
     """ test base model"""
     @classmethod
@@ -35,7 +35,6 @@ class TestBaseModel(unittest.TestCase):
         self.assertIsInstance(self.my_model.created_at, str)
         self.assertEqual(type(self.my_new_model.created_at), datetime)
 
-
     def test_BaseModel_methods(self):
         """ check the methods in class"""
         self.assertTrue(hasattr(BaseModel, "__init__"))
@@ -52,14 +51,9 @@ class TestBaseModel(unittest.TestCase):
         self.assertDictEqual(self.my_model.to_dict(), bm.to_dict())
         self.assertAlmostEqual(self.my_model.to_dict(), bm.to_dict())
 
-
-
-
     @classmethod
     def tearDownClass(cls):
         """clear objects after all test"""
-
-
 
 
 if __name__ == '__main__':

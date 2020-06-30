@@ -4,6 +4,13 @@ python module
 """
 import json
 from models.base_model import BaseModel
+from models import storage
+from models.user import User
+from models.city import City
+from models.amenity import Amenity
+from models.place import Place
+from models.review import Review
+from models.state import State
 
 
 class FileStorage:
@@ -37,5 +44,5 @@ class FileStorage:
             return
         new_dct = {}
         for key, val in new_obj.items():
-            new_dct[key] = BaseModel(**val)
-        self.__objects = new_dct
+            FileStorage.__objects[key] = eval(
+                        val["__class__"])(**val)

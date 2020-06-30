@@ -24,6 +24,7 @@ class BaseModel():
         else:
             self.id = str(uuid.uuid4())
             self.created_at = datetime.now()
+            models.storage.new(self)
 
     def __str__(self):
         """the forma of sting return """
@@ -35,13 +36,12 @@ class BaseModel():
     def save(self):
         """save instance """
         self.updated_at = datetime.now()
-        models.storage.new(self)
         models.storage.save()
 
     def to_dict(self):
         """ method to generate a dictionary representation of an instance """
         dct = self.__dict__
-        self.created_at = datetime.now().isoformat("T")
-        self.updated_at = datetime.now().isoformat("T")
+        self.created_at = datetime.now().isoformat()
+        self.updated_at = datetime.now().isoformat()
         dct.update({'__class__': type(self).__name__})
         return dct

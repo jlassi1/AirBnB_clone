@@ -1,12 +1,15 @@
+#!/usr/bin/python3
 """
+python module
 """
 import datetime
 import json
 import os
 from models.base_model import BaseModel
 
+
 class FileStorage:
-    """ """
+    """storage class"""
     __file_path = "file.json"
     __objects = {}
 
@@ -32,10 +35,9 @@ class FileStorage:
         try:
             with open(self.__file_path, 'r') as f:
                 new_obj = json.load(f)
-        except:
+        except TypeError:
             return
         new_dct = {}
         for key, val in new_obj.items():
             new_dct[key] = BaseModel(**val)
         self.__objects = new_dct
-

@@ -70,28 +70,11 @@ class HBNBCommand(cmd.Cmd):
             else:
                 print('** no instance found **')
 
-    def do_all(self, line):
-        """ Prints all string representation of all instances """
-        comm = shlex.split(line)
-        list = []
-        if len(comm) == 0:
-            for i in storage.all():
-                print(storage.all([i]))
-        else:
-            if comm in BaseModel:
-                for k in storage.all():
-                    if comm[0] in k:
-                        print(objs[k])
-            else:
-                print("** class doesn't exist **")
-
     def do_update(self, line):
         """ Updates an instance based on the class name and id """
         comm = shlex.split(line)
         if len(comm) == 0:
             print("** class name missing **")
-        elif comm[1] not in "BaseModel":
-            print(" ** class doesn't exist **")
         elif len(comm) == 1:
             print("** instance id missing **")
         elif len(comm) == 2:
@@ -99,14 +82,14 @@ class HBNBCommand(cmd.Cmd):
         elif len(comm) == 3:
             print("** value missing **")
         elif instance in storage.all():
+            instance = comm[0] + '.' + comm[1]
             return
         elif instance not in storage.all():
-            instance = comm[0] + '.' + comm[1]
             print("** no instance found **")
         else:
             instance = comm[0] + '.' + comm[1]
-            setattr(storage.all.save()[instance], comm[2], comm[3])
-            storage.all[instance].save()
+            setattr(storage.all.save(), comm[2], comm[3])
+            storage.save()
 
 
 if __name__ == '__main__':

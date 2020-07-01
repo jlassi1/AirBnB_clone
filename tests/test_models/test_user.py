@@ -6,6 +6,7 @@ import uuid
 from datetime import datetime
 from models.user import User
 import models
+import os
 
 
 class TestUser(unittest.TestCase):
@@ -56,7 +57,16 @@ class TestUser(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         """clear objects after all test"""
-
+        
+        del cls.my_user.first_name
+        del cls.my_user.last_name
+        del cls.my_user.email
+        del cls.my_user.password
+        del cls.my_user
+        try:
+            os.remove("file.json")
+        except FileNotFoundError:
+                pass
 
 if __name__ == '__main__':
     unittest.main()

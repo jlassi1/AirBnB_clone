@@ -1,4 +1,3 @@
-#!/usr/bin/python3
 """tests basemodel"""
 import unittest
 from models.base_model import BaseModel
@@ -33,7 +32,7 @@ class TestBaseModel(unittest.TestCase):
         self.assertIsInstance(self.my_model.id, str)
         self.assertIsInstance(self.my_model.name, str)
         self.assertIsInstance(self.my_model.my_number, int)
-        self.assertIsInstance(self.my_model.created_at, datetime)
+        self.assertIsInstance(self.my_model.created_at, str)
         self.assertEqual(type(self.my_new_model.created_at), datetime)
 
     def test_BaseModel_methods(self):

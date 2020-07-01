@@ -19,7 +19,9 @@ class BaseModel():
                 if key == "created_at" or key == "updated_at":
                     val = datetime.strptime(val,
                                             "%Y-%m-%dT%H:%M:%S.%f")
-                if key != "__class__":
+                elif key == '__class__':
+                    pass
+                else:
                     setattr(self, key, val)
         else:
             models.storage.new(self)

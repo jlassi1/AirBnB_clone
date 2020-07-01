@@ -6,7 +6,6 @@ from models.base_model import BaseModel
 from models.city import City
 
 
-
 class TestUser(unittest.TestCase):
     """ test user model"""
     @classmethod

@@ -93,7 +93,7 @@ class HBNBCommand(cmd.Cmd):
                 s = str(storage.all()[k])
                 o_list.append(s)
             print(o_list)
-        elif comm[0] in self.classes:
+        elif comm[0] in self.classs:
             o_list = []
             for k in storage.all():
                 if comm[0] in k:

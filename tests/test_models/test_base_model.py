@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 """tests basemodel"""
 import unittest
 from models.base_model import BaseModel

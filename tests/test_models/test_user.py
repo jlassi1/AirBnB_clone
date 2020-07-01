@@ -1,13 +1,14 @@
+#!/usr/bin/python3
+
 """tests User"""
 import unittest
-from models.base_model import BaseModel
 import uuid
 from datetime import datetime
 from models.user import User
 
 
 class TestUser(unittest.TestCase):
-    """ test base model"""
+    """ test user model"""
     @classmethod
     def setUp(cls):
         """steup class method"""
@@ -28,6 +29,7 @@ class TestUser(unittest.TestCase):
         self.assertIsNotNone(User.__str__.__doc__)
         self.assertIsNotNone(User.save.__doc__)
         self.assertIsNotNone(User.to_dict.__doc__)
+        self.assertIsInstance(self.my_user.to_dict(), dict)
 
     def test_type(self):
         """ check the type of instante"""
@@ -37,19 +39,15 @@ class TestUser(unittest.TestCase):
         self.assertIsInstance(self.my_user.password, str)
         self.assertIsInstance(self.my_user.created_at, datetime)
 
-    def test_User_methods(self):
-        """ check the methods in class"""
-        self.assertTrue(hasattr(User, "__init__"))
-        self.assertTrue(hasattr(User, "__str__"))
-        self.assertTrue(hasattr(User, "save"))
-        self.assertTrue(hasattr(User, "to_dict"))
-
     def test_User_instant(self):
         """ """
         usr = self.my_user
         self.assertEqual(self.my_user.created_at, usr.created_at)
         self.assertEqual(self.my_user.updated_at, usr.updated_at)
-        self.assertEqual(self.my_user.id, usr.id)
+        self.assertEqual(self.my_user.first_name, usr.first_name)
+        self.assertEqual(self.my_user.last_name, usr.last_name)
+        self.assertEqual(self.my_user.email, usr.email)
+        self.assertEqual(self.my_user.password, usr.password)
         self.assertDictEqual(self.my_user.to_dict(), usr.to_dict())
         self.assertAlmostEqual(self.my_user.to_dict(), usr.to_dict())
 

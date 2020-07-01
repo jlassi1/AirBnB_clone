@@ -1,72 +1,139 @@
-#!/usr/bin/python3
-
-"""tests User"""
+#!/usr/bin/python
+"""
+test module
+"""
 import unittest
-import uuid
 from datetime import datetime
+from models.base_model import BaseModel
+from models.engine.file_storage import FileStorage
 from models.user import User
-import models
+from models import storage
+import pep8
 import os
 
 
 class TestUser(unittest.TestCase):
-    """ test user model"""
-    @classmethod
-    def setUp(cls):
-        """steup class method"""
-        cls.my_user = User()
-        cls.my_user.first_name = "Betty"
-        cls.my_user.last_name = "Holberton"
-        cls.my_user.email = "airbnb@holbertonshool.com"
-        cls.my_user.password = "root"
-        cls.my_user.save()
+    """test User Class"""
 
-    def test_User_cls_doc(self):
-        """check if docstring for class is present"""
-        self.assertIsNotNone(User.__doc__)
+    def setUp(self):
+        """Setup Method
+        Args:
+            na
+        Description:
+            method will run before all test methods
+        Return:
+            na
+        """
 
-    def test_User_methods_doc(self):
-        """docstring exist for all methods"""
-        self.assertIsNotNone(User.__init__.__doc__)
-        self.assertIsNotNone(User.__str__.__doc__)
-        self.assertIsNotNone(User.save.__doc__)
-        self.assertIsNotNone(User.to_dict.__doc__)
-        self.assertIsInstance(self.my_user.to_dict(), dict)
+        self.a = User()
+        self.a.email = "Heindrick@gmail.com"
+        self.a.password = "Holberton"
+        self.a.first_name = "Heiny"
+        self.a.last_name = "Cheung"
+        self.b = User()
 
-    def test_type(self):
-        """ check the type of instante"""
-        self.assertIsInstance(self.my_user.first_name, str)
-        self.assertIsInstance(self.my_user.last_name, str)
-        self.assertIsInstance(self.my_user.email, str)
-        self.assertIsInstance(self.my_user.password, str)
-        self.assertIsInstance(self.my_user.created_at, datetime)
-        self.assertTrue(issubclass(User, models.base_model.BaseModel))
+    def tearDown(self):
+        """teardown method
+        Args:
+            na
+        Description:
+            remove testing instances and delete file.json file
+        Return:
+            na
+        """
 
-    def test_User_instant(self):
-        """ """
-        usr = self.my_user
-        self.assertEqual(self.my_user.created_at, usr.created_at)
-        self.assertEqual(self.my_user.updated_at, usr.updated_at)
-        self.assertEqual(self.my_user.first_name, usr.first_name)
-        self.assertEqual(self.my_user.last_name, usr.last_name)
-        self.assertEqual(self.my_user.email, usr.email)
-        self.assertEqual(self.my_user.password, usr.password)
-        self.assertDictEqual(self.my_user.to_dict(), usr.to_dict())
-        self.assertAlmostEqual(self.my_user.to_dict(), usr.to_dict())
-
-    @classmethod
-    def tearDownClass(cls):
-        """clear objects after all test"""
-        del cls.my_user.first_name
-        del cls.my_user.last_name
-        del cls.my_user.email
-        del cls.my_user.password
-        del cls.my_user
+        del self.a
+        del self.b
         try:
             os.remove("file.json")
         except FileNotFoundError:
             pass
 
+    def test_pep8_conformance(self):
+        """Test that we conform to PEP8"""
 
-if __name__ == '__main__':
+        pep8_style = pep8.StyleGuide(quiet=True)
+        result = pep8_style.check_files(['models/amenity.py'])
+        self.assertEqual(result.total_errors, 0, "Found code style errors.")
+
+    def test_email(self):
+        """Setup Method
+        Args:
+            na
+        Description:
+            test string id of instance
+        Return:
+            na
+        """
+
+        self.assertNotEqual(self.a.email, "HC@gmail.com")
+        self.assertTrue(self.a.email, "Heindrick@gmail.com")
+        self.assertIsInstance(self.a.email, str)
+        self.assertIsInstance(self.b.email, str)
+
+    def test_password(self):
+        """Setup Method
+        Args:
+            na
+        Description:
+            test string id of instance
+        Return:
+            na
+        """
+
+        self.assertEqual(type(self.b.password), str)
+        self.assertIsNotNone(self.a.password)
+        self.assertIsNotNone(self.b.password)
+        self.assertEqual(self.a.password, "Holberton")
+
+    def test_first_name(self):
+        """Setup Method
+        Args:
+            na
+        Description:
+            test string id of instance
+        Return:
+            na
+        """
+
+        self.assertEqual(self.a.first_name, "Heiny")
+        self.assertIsInstance(self.b.first_name, str)
+        self.assertIsInstance(self.b.first_name, str)
+        self.assertEqual(self.b.first_name, "")
+
+    def test_last_name(self):
+        """Setup Method
+        Args:
+            na
+        Description:
+            test string id of instance
+        Return:
+            na
+        """
+
+        self.assertEqual(self.a.last_name, "Cheung")
+        self.assertIsInstance(self.a.last_name, str)
+        self.assertIsInstance(self.b.last_name, str)
+        self.assertEqual(self.b.last_name, "")
+
+    def test_inherit(self):
+        """test method
+        Args:
+            na
+        Description:
+            if subclass of BaseModel
+        Return:
+            na
+        """
+
+        self.assertTrue(issubclass(User, BaseModel))
+
+    def test_save(self):
+        """test save"""
+
+        self.b.save()
+        self.assertNotEqual(self.b.created_at, self.b.updated_at)
+
+
+if __name__ == "__main__":
     unittest.main()

@@ -1,13 +1,13 @@
 #!/usr/bin/python3
 
-"""tests User"""
+"""tests City"""
 import unittest
 from models.base_model import BaseModel
 from models.city import City
 
 
-class TestUser(unittest.TestCase):
-    """ test user model"""
+class TestCity(unittest.TestCase):
+    """ test City model"""
     @classmethod
     def setUp(cls):
         """steup class method"""

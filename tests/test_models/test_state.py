@@ -1,13 +1,13 @@
 #!/usr/bin/python3
 
-"""tests User"""
+"""tests State"""
 import unittest
 from models.base_model import BaseModel
 from models.state import State
 
 
-class TestUser(unittest.TestCase):
-    """ test user model"""
+class TestState(unittest.TestCase):
+    """ test State model"""
     @classmethod
     def setUp(cls):
         """steup class method"""

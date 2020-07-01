@@ -40,8 +40,8 @@ class BaseModel():
 
     def to_dict(self):
         """ method to generate a dictionary representation of an instance """
-        dct = self.__dict__
-        self.created_at = datetime.now().isoformat()
-        self.updated_at = datetime.now().isoformat()
-        dct.update({'__class__': type(self).__name__})
+        dct = dict(self.__dict__)
+        dct['__class__'] = self.__class__.__name__
+        dct['created_at'] = self.created_at.isoformat()
+        dct['updated_at'] = self.updated_at.isoformat()
         return dct

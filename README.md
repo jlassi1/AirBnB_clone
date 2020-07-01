@@ -1,4 +1,4 @@
-                            AirBnB clone
+                            AirBnB clone - The console
 Synopsis:
 
 The HBNB project is an AirBnB cloning that will be executed on different levels till building an entire web application at the end of the year.

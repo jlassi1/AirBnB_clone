@@ -93,7 +93,7 @@ class HBNBCommand(cmd.Cmd):
                 s = str(storage.all()[k])
                 o_list.append(s)
             print(o_list)
-        elif comm[0] in self.classes:
+        elif comm[0] in self.classs:
             o_list = []
             for k in storage.all():
                 if comm[0] in k:
@@ -116,13 +116,12 @@ class HBNBCommand(cmd.Cmd):
             print("** attribute name missing **")
         elif len(comm) == 3:
             print("** value missing **")
+        elif comm[0] + '.' + comm[1] not in storage.all():
+            print("** no instance found **")
         else:
             ins = comm[0] + '.' + comm[1]
-            if ins not in storage.all():
-                print("** no instance found **")
-            else:
-                setattr(storage.all()[ins], comm[2], comm[3])
-                storage.all()[ins].save()
+            setattr(storage.all()[ins], comm[2], comm[3])
+            storage.all()[ins].save()
 
 
 if __name__ == '__main__':

@@ -121,8 +121,8 @@ class HBNBCommand(cmd.Cmd):
             if ins not in storage.all():
                 print("** no instance found **")
             else:
-                setattr(storage.all()[ins].save(), comm[2], comm[3])
-                storage.save()
+                setattr(storage.all()[ins], comm[2], comm[3])
+                storage.all()[ins].save()
 
 
 if __name__ == '__main__':

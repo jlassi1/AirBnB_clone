@@ -54,6 +54,11 @@ class TestBaseModel(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         """clear objects after all test"""
+        del cls.my_model.name
+        del cls.my_model.my_number
+        del cls.my_model_json
+        del cls.my_new_model
+        del cls.my_model
 
 
 if __name__ == '__main__':

@@ -5,6 +5,7 @@ import unittest
 import uuid
 from datetime import datetime
 from models.user import User
+import models
 
 
 class TestUser(unittest.TestCase):
@@ -38,6 +39,7 @@ class TestUser(unittest.TestCase):
         self.assertIsInstance(self.my_user.email, str)
         self.assertIsInstance(self.my_user.password, str)
         self.assertIsInstance(self.my_user.created_at, datetime)
+        self.assertTrue(issubclass(User, models.base_model.BaseModel))
 
     def test_User_instant(self):
         """ """

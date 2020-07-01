@@ -1,13 +1,13 @@
 #!/usr/bin/python3
 
-"""tests User"""
+"""tests City"""
 import unittest
 from models.base_model import BaseModel
 from models.city import City
 
 
-class TestUser(unittest.TestCase):
-    """ test user model"""
+class TestCity(unittest.TestCase):
+    """ test City model"""
     @classmethod
     def setUp(cls):
         """steup class method"""
@@ -23,7 +23,7 @@ class TestUser(unittest.TestCase):
         self.assertEqual(b.name, "")
 
     def test_state_id(self):
-        """ test state id """
+        """ test state id"""
         b = City()
         self.assertEqual(self.city.state_id, "root")
         self.assertIsInstance(self.city.state_id, str)
@@ -41,3 +41,7 @@ class TestUser(unittest.TestCase):
         del cls.city.name
         del cls.city.state_id
         del cls.city
+
+
+if __name__ == '__main__':
+    unittest.main()

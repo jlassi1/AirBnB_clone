@@ -23,7 +23,7 @@ class TestUser(unittest.TestCase):
         self.assertEqual(b.name, "")
 
     def test_state_id(self):
-        """ test last name"""
+        """ test state id """
         b = City()
         self.assertEqual(self.city.state_id, "root")
         self.assertIsInstance(self.city.state_id, str)

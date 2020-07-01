@@ -123,6 +123,9 @@ class HBNBCommand(cmd.Cmd):
             setattr(storage.all()[ins], comm[2], comm[3])
             storage.all()[ins].save()
 
+    def do_default(self, line):
+        """ retrieve input """
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()

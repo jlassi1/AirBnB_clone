@@ -4,16 +4,25 @@ python module
 """
 import json
 from models.base_model import BaseModel
+
 from models.user import User
+from models.state import State
 from models.city import City
 from models.amenity import Amenity
-from models.place import Place
 from models.review import Review
-from models.state import State
-
+from models.place import Place
 
 class FileStorage:
     """storage class"""
+    calsss = {
+        "BaseModel": BaseModel,
+        "State": State,
+        "City": City,
+        "Review": Review,
+        "Place": Place,
+        "Amenity": Amenity
+        }
+
     __file_path = "file.json"
     __objects = {}
 
@@ -43,5 +52,5 @@ class FileStorage:
             return
         new_dct = {}
         for key, val in new_obj.items():
-            FileStorage.__objects[key] = eval(
-                        val["__class__"])(val)
+            new_dct[key] = self.calsss[val["__class__"]](**val)
+        self.__objects = new_dct

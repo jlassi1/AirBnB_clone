@@ -55,9 +55,10 @@ class TestUser(unittest.TestCase):
         b.save()
         self.assertNotEqual(b.created_at, b.updated_at)
 
-    def test_subclass(self):
+    def test_UserClass(self):
         """ check the type of instante"""
         self.assertTrue(issubclass(User, BaseModel))
+        self.assertIsInstance(self.my_user, User)
 
     def test_User_instant(self):
         """ """
@@ -79,10 +80,6 @@ class TestUser(unittest.TestCase):
         del cls.my_user.email
         del cls.my_user.password
         del cls.my_user
-        try:
-            os.remove("file.json")
-        except FileNotFoundError:
-            pass
 
 
 if __name__ == '__main__':

@@ -14,15 +14,6 @@ from models.place import Place
 
 class FileStorage:
     """storage class"""
-    calsss = {
-        "BaseModel": BaseModel,
-        "State": State,
-        "City": City,
-        "Review": Review,
-        "Place": Place,
-        "Amenity": Amenity
-        }
-
     __file_path = "file.json"
     __objects = {}
 
@@ -52,5 +43,5 @@ class FileStorage:
             return
         new_dct = {}
         for key, val in new_obj.items():
-            new_dct[key] = self.calsss[val["__class__"]](**val)
+            new_dct[key] = eval(val["__class__"])(**val)
         self.__objects = new_dct

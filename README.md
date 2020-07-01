@@ -1,35 +1,39 @@
-                            AirBnB clone - The console
-Synopsis:
+#              AirBnB clone
+## Synopsis:
 
-The HBNB project is an AirBnB cloning that will be executed on different levels till building an entire web application at the end of the year.
-On this level we will handle a part from the backend.
+        The HBNB project is an AirBnB cloning that will be executed on different levels till building an entire web application at the end of the year.
+        On this level we will handle a part from the backend.
 
-Description:
+## Description:
 
-The main class:
-Write a class BaseModel that defines all common attributes/methods for other classes
+### The main class:
+        Write a class BaseModel that defines all common attributes/methods for other classes
 
-Public instance attributes: 
-    id: string - assign with an uuid when an instance is created:
+### Public instance attributes: 
+   <MENU>
+       <LI> id: string - assign with an uuid when an instance is created:
         you can use uuid.uuid4() to generate unique id but don’t forget to convert to a string
         the goal is to have unique id for each BaseModel
-    created_at: datetime - assign with the current datetime when an instance is created
-    updated_at: datetime - assign with the current datetime when an instance is created and it will be updated every time you change your object
+        <LI>created_at: datetime - assign with the current datetime when an instance is created
+        <LI>updated_at: datetime - assign with the current datetime when an instance is created and it will be updated every time you change your object
+   <MENU>
 
-Public instance methods:
+### Public instance methods:
+<MENU>
+    <LI>save(self): updates the public instance attribute updated_at with the current datetime
+    <LI>to_dict(self): returns a dictionary containing all keys/values of __dict__ of the instanc
+<MENU>
 
-    save(self): updates the public instance attribute updated_at with the current datetime
-    to_dict(self): returns a dictionary containing all keys/values of __dict__ of the instanc
-The console:
- create your data model
- manage (create, update, destroy, etc) objects via a console / command interpreter
- store and persist objects to a file (JSON file)
+### The console:
+         create your data model
+         manage (create, update, destroy, etc) objects via a console / command interpreter
+         store and persist objects to a file (JSON file)
 
-The first piece is to manipulate a powerful storage system. This storage engine will give us an abstraction between “My object” and “How they are stored and persisted”.
-The console will be a tool to validate this storage engine
+        The first piece is to manipulate a powerful storage system. This storage engine will give us an abstraction between “My object” and “How they are stored and persisted”.
+        The console will be a tool to validate this storage engine
 
 
-See the follow examples on the utility of the console:
+### See the follow examples on the utility of the console:
 how to call the console : 
 ayari_imen@ayari:~/AirBnB_clone$ ./console.py 
 (hbnb) 
@@ -54,12 +58,15 @@ f94953ec-931f-4cf1-9f42-0acddd014cce
 
 ** value missing **
 
-Technologies Used:
- language: Python version 3.4.3.
- verified by the PEP8 version 1.7
- The console class HBNBCommand is based on the cmd python module
- JSON is to serialize and deserialize data
- Unittesting for testing
+
+
+
+## Technologies Used:
+         language: Python version 3.4.3.
+         verified by the PEP8 version 1.7
+         The console class HBNBCommand is based on the cmd python module
+         JSON is to serialize and deserialize data
+         Unittesting for testing
 
 
 Contributors:
@@ -68,4 +75,5 @@ Imene Ayari: https://github.com/Immaannn2222
 
 
 
-Release date: July 2nd, 2020 (enhancements loading...)
+## Release date: 
+July 2nd, 2020 (enhancements loading...)

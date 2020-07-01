@@ -123,8 +123,11 @@ class HBNBCommand(cmd.Cmd):
             setattr(storage.all()[ins], comm[2], comm[3])
             storage.all()[ins].save()
 
-    def do_default(self, line):
+    def do_default(self, args):
         """ retrieve input """
+        comm = shlex.split(args)
+        if comm[1] == "all()" and comm[1] in HBNBCommand.classs:
+            return self.do_all(comm[0])
 
 
 if __name__ == '__main__':

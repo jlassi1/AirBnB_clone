@@ -116,9 +116,12 @@ class HBNBCommand(cmd.Cmd):
             print("** attribute name missing **")
         elif len(comm) == 3:
             print("** value missing **")
+        elif comm[0] + '.' + comm[1] not in storage.all():
+            print('** no instance found **')
         else:
-            setattr(storage.all(), comm[2], comm[3])
-            storage.save()
+            i = comm[0] + '.' + comm[1]
+            setattr(storage.all()[i], comm[2], comm[3])
+            storage.all()[i].save()
 
 
 if __name__ == '__main__':

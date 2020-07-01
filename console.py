@@ -87,11 +87,21 @@ class HBNBCommand(cmd.Cmd):
     def do_all(self, line):
         """ Prints all string representation of all instances """
         comm = shlex.split(line)
-        if len(comm) == 0 or len(comm) == 1 and comm[1] in HBNBCommand.classs:
+        if len(comm) == 0:
+            o_list = []
             for k in storage.all():
-                print(str(d))
+                s = str(storage.all()[k])
+                o_list.append(s)
+            print(o_list)
+        elif comm[0] in self.classs:
+            o_list = []
+            for k in storage.all():
+                if comm[0] in k:
+                    s = str(storage.all()[k])
+                    o_list.append(s)
+            print(o_list)
         else:
-            return ("** class doesn't exist **")
+            print("** class doesn't exist **")
 
     def do_update(self, line):
         """ Updates an instance based on the class name and id """

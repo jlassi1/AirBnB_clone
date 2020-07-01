@@ -33,15 +33,25 @@ See the follow examples on the utility of the console:
 how to call the console : 
 ayari_imen@ayari:~/AirBnB_clone$ ./console.py 
 (hbnb) 
+
+
 (hbnb) all
 ["[BaseModel] (0d6a8a84-d01a-458f-b6cb-9bbcc9d5fefc) {'id': '0d6a8a84-d01a-458f-b6cb-9bbcc9d5fefc', 'created_at': datetime.datetime(2020, 7, 1, 15, 6, 9, 356015), 'updated_at': datetime.datetime(2020, 7, 1, 15, 6, 9, 356022), 'name': 'Holberton', 'my_number': 89}", "[BaseModel] (2895be14-a3c1-4f19-94e1-b3112a3a7ed4) {'id': '2895be14-a3c1-4f19-94e1-b3112a3a7ed4', 'created_at': datetime.datetime(2020, 7, 1, 15, 6, 10, 114481), 'updated_at': datetime.datetime(2020, 7, 1, 15, 6, 10, 114492), 'name': 'Holberton', 'my_number': 89}"
 (hbnb) show
+
 ** class name missing **
+
 (hbnb) create BaseModel
+
+
 f94953ec-931f-4cf1-9f42-0acddd014cce
+
 (hbnb) update BaseModel f94953ec-931f-4cf1-9f42-0acddd014cce
+
 ** attribute name missing **
+
 (hbnb) update BaseModel f94953ec-931f-4cf1-9f42-0acddd014cce name
+
 ** value missing **
 
 Technologies Used:
@@ -51,8 +61,11 @@ Technologies Used:
  JSON is to serialize and deserialize data
  Unittesting for testing
 
+
 Contributors:
 khawla Jlassi: https://github.com/jlassi1
 Imene Ayari: https://github.com/Immaannn2222
 
-Relase date: July 2nd, 2020 (enhancements loading...)
+
+
+Release date: July 2nd, 2020 (enhancements loading...)

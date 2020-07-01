@@ -24,8 +24,6 @@ class BaseModel():
                                                 "%Y-%m-%dT%H:%M:%S.%f")
                     setattr(self, key, val)
 
-            
-
     def __str__(self):
         """the forma of sting return """
         return "[{}] ({}) {}".format(

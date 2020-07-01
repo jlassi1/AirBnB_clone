@@ -4,10 +4,7 @@
 import unittest
 from datetime import datetime
 from models.base_model import BaseModel
-from models.engine.file_storage import FileStorage
 from models.user import User
-from models import storage
-import pep8
 import os
 
 
@@ -25,9 +22,11 @@ class TestUser(unittest.TestCase):
 
     def test_email(self):
         """test email"""
+        b = User()
         self.assertNotEqual(self.my_user.email, "mbmb@holbertonshool.com")
         self.assertTrue(self.my_user.email, "airbnb@holbertonshool.com")
         self.assertIsInstance(self.my_user.email, str)
+        self.assertEqual(b.email, "")
 
     def test_first_name(self):
         """ test first name"""
@@ -56,13 +55,8 @@ class TestUser(unittest.TestCase):
         b.save()
         self.assertNotEqual(b.created_at, b.updated_at)
 
-    def test_type(self):
+    def test_subclass(self):
         """ check the type of instante"""
-        self.assertIsInstance(self.my_user.first_name, str)
-        self.assertIsInstance(self.my_user.last_name, str)
-        self.assertIsInstance(self.my_user.email, str)
-        self.assertIsInstance(self.my_user.password, str)
-        self.assertIsInstance(self.my_user.created_at, datetime)
         self.assertTrue(issubclass(User, BaseModel))
 
     def test_User_instant(self):

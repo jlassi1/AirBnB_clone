@@ -44,4 +44,4 @@ class FileStorage:
         new_dct = {}
         for key, val in new_obj.items():
             FileStorage.__objects[key] = eval(
-                        val["__class__"])(**val)
+                        val["__class__"])(val)

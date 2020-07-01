@@ -117,12 +117,8 @@ class HBNBCommand(cmd.Cmd):
         elif len(comm) == 3:
             print("** value missing **")
         else:
-            instance = comm[0] + '.' + comm[1]
-            if instance not in storage.all():
-                print("** no instance found **")
-            else:
-                setattr(storage.all.save(), comm[2], comm[3])
-                storage.save()
+            setattr(storage.all(), comm[2], comm[3])
+            storage.save()
 
 
 if __name__ == '__main__':

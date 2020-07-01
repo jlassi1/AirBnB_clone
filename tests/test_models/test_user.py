@@ -57,7 +57,6 @@ class TestUser(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         """clear objects after all test"""
-        
         del cls.my_user.first_name
         del cls.my_user.last_name
         del cls.my_user.email
@@ -66,7 +65,8 @@ class TestUser(unittest.TestCase):
         try:
             os.remove("file.json")
         except FileNotFoundError:
-                pass
+            pass
+
 
 if __name__ == '__main__':
     unittest.main()

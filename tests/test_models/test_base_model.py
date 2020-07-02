@@ -29,10 +29,11 @@ class TestBaseModel(unittest.TestCase):
 
     def test_type(self):
         """ check the type of instante"""
+        b = BaseModel()
         self.assertIsInstance(self.my_model.id, str)
         self.assertIsInstance(self.my_model.name, str)
         self.assertIsInstance(self.my_model.my_number, int)
-        self.assertIsNot(self.my_model.created_at, str)
+        self.assertIsInstance(b.updated_at, str)
         self.assertEqual(type(self.my_new_model.created_at), datetime)
 
     def test_BaseModel_methods(self):

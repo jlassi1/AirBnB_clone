@@ -125,7 +125,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_default(self, args):
         """ retrieve input """
-        comm = shlex.split(args)
+        comm = args.split(".")
         if comm[1] == "all()" and comm[0] in HBNBCommand.classs:
             return self.do_all(comm[0])
 

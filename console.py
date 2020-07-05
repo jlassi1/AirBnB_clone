@@ -5,6 +5,7 @@ python module
 import cmd
 from models.base_model import BaseModel
 import shlex
+import re
 from models import storage
 from models.user import User
 from models.city import City
@@ -123,12 +124,11 @@ class HBNBCommand(cmd.Cmd):
             setattr(storage.all()[ins], comm[2], comm[3])
             storage.all()[ins].save()
 
-    def do_default(self, args):
+    def default(self, args):
         """ retrieve input """
-        comm = shlex.split(args)
-        if comm[1] == "all()" and comm[0] in HBNBCommand.classs:
+        comm = args.split(".")
+        if comm[0] in self.classs and comm[1] == "all()":
             return self.do_all(comm[0])
-
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()

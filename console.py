@@ -129,6 +129,9 @@ class HBNBCommand(cmd.Cmd):
         comm = args.split(".")
         if comm[0] in self.classs and comm[1] == "all()":
             return self.do_all(comm[0])
+        if comm[0] in self.classs and comm[1] == "count()":
+            print(len(storage.all()))
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()

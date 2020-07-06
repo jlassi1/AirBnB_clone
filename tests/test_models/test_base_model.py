@@ -33,7 +33,6 @@ class TestBaseModel(unittest.TestCase):
         self.assertIsInstance(self.my_model.id, str)
         self.assertIsInstance(self.my_model.name, str)
         self.assertIsInstance(self.my_model.my_number, int)
-        self.assertIsInstance(b.updated_at, datetime)
         self.assertEqual(type(self.my_new_model.created_at), datetime)
 
     def test_BaseModel_methods(self):
@@ -51,6 +50,21 @@ class TestBaseModel(unittest.TestCase):
         self.assertEqual(self.my_model.id, bm.id)
         self.assertDictEqual(self.my_model.to_dict(), bm.to_dict())
         self.assertAlmostEqual(self.my_model.to_dict(), bm.to_dict())
+
+    def test_str_BaseModel(self):
+        """ test str function """
+        b = BaseModel()
+        s = b.__str__()
+        test = "[{}] ({}) {}".format(b.__class__.__name__, b.id, b.__dict__)
+        self.assertEqual(s, test)
+
+    def test_save_BaseModel(self):
+            """ test save function """
+            b = BaseModel()
+            update_in_create = b.updated_at
+            b.save()
+            update_in_save = b.updated_at
+            self.assertNotEqual(update_in_create, update_in_save)
 
     @classmethod
     def tearDownClass(cls):

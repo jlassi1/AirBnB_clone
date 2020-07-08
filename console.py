@@ -138,8 +138,8 @@ class HBNBCommand(cmd.Cmd):
         if comm[0] in self.classs and comm[1] == "count()":
             print(len(storage.all()))
         if comm[0] in self.classs and comm[1] == "show(id)":
-            comm[1] = re("(", ".") and re(")", "") and re(".", " ")
-            return self.do_show(comm[0] + "." + comm[1])
+            _id = (re.split('["]', comm[1])[1]) + " " + (re.split('["]', comm[1])[2])
+            return self.do_show(comm[0] + " " + _id)
 
 
 if __name__ == '__main__':

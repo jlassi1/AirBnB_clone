@@ -139,6 +139,9 @@ class HBNBCommand(cmd.Cmd):
             print(len(storage.all()))
         if comm[0] in self.classs and comm[1] in "show":
             return self.do_show(comm[0] + " " + comm[2])
+        if comm[0] in self.classs and comm[1] in "destroy":
+            return self.do_destroy(comm[0] + " " + comm[2])
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()

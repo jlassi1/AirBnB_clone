@@ -29,10 +29,10 @@ class TestBaseModel(unittest.TestCase):
 
     def test_type(self):
         """ check the type of instante"""
+        b = BaseModel()
         self.assertIsInstance(self.my_model.id, str)
         self.assertIsInstance(self.my_model.name, str)
         self.assertIsInstance(self.my_model.my_number, int)
-        self.assertIsInstance(self.my_model.created_at, str)
         self.assertEqual(type(self.my_new_model.created_at), datetime)
 
     def test_BaseModel_methods(self):
@@ -50,6 +50,33 @@ class TestBaseModel(unittest.TestCase):
         self.assertEqual(self.my_model.id, bm.id)
         self.assertDictEqual(self.my_model.to_dict(), bm.to_dict())
         self.assertAlmostEqual(self.my_model.to_dict(), bm.to_dict())
+        self.assertIsInstance(bm.to_dict(), dict)
+
+    def test_str_BaseModel(self):
+        """ test str function """
+        b = BaseModel()
+        s = b.__str__()
+        test = "[{}] ({}) {}".format(b.__class__.__name__, b.id, b.__dict__)
+        self.assertEqual(s, test)
+
+    def test_save_BaseModel(self):
+            """ test save function """
+            b = BaseModel()
+            update_in_create = b.updated_at
+            b.save()
+            update_in_save = b.updated_at
+            self.assertNotEqual(update_in_create, update_in_save)
+
+    def test_to_dict_BaseModel(self):
+        """ test to dict funtion """
+
+        b = BaseModel()
+        d = {"__class__": b1.__class__.__name__}
+        d.update(b1.__dict__)
+        d["created_at"] = b.created_at.isoformat()
+        d["updated_at"] = b.updated_at.isoformat()
+        self.assertAlmostEqual(print(d), print(b.to_dict()))
+
 
     @classmethod
     def tearDownClass(cls):

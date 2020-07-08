@@ -5,6 +5,7 @@ python module
 import cmd
 from models.base_model import BaseModel
 import shlex
+import re
 from models import storage
 from models.user import User
 from models.city import City
@@ -128,6 +129,17 @@ class HBNBCommand(cmd.Cmd):
             ins = comm[0] + '.' + comm[1]
             setattr(storage.all()[ins], comm[2], comm[3])
             storage.all()[ins].save()
+
+    def default(self, args):
+        """ retrieve input """
+        comm = args.split(".")
+        if comm[0] in self.classs and comm[1] == "all()":
+            return self.do_all(comm[0])
+        if comm[0] in self.classs and comm[1] == "count()":
+            print(len(storage.all()))
+        if comm[0] in self.classs and comm[1] == "show(id)":
+            comm[1] = re("(", ".") and re(")", "") and re(".", " ")
+            return self.do_show(comm[0] + "." + comm[1])
 
 
 if __name__ == '__main__':

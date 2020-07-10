@@ -136,7 +136,8 @@ class HBNBCommand(cmd.Cmd):
         if comm[0] in self.classs and comm[1] in "destroy":
             return self.do_destroy(comm[0] + " " + comm[2])
         if comm[0] in self.classs and comm[1] in "update":
-            return self.do_update(comm[0] + " " + comm[2] + " " + comm[3] + " " + comm[4])
+            print(comm)
+            return self.do_update(comm[0] + " " + comm[3] + " " + comm[6] + " " + comm[9])
 
 
 if __name__ == '__main__':

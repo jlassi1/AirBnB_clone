@@ -74,11 +74,12 @@ class TestBaseModel(unittest.TestCase):
         d.update(b.__dict__)
         d["created_at"] = b.created_at.isoformat()
         d["updated_at"] = b.updated_at.isoformat()
-        self.assertAlmostEqual(print(d), print(b.to_dict()))
+        self.assertEqual(print(d), print(b.to_dict()))
         self.assertIsInstance(b.to_dict(), dict)
         for key, values in self.my_model.to_dict().items():
             if key in ('id', 'created_at', '__class__', 'updated_at'):
                 self.assertIsInstance(self.my_model.to_dict()[key], str)
+
 
     @classmethod
     def tearDownClass(cls):

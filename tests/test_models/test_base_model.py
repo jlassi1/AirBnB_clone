@@ -50,7 +50,7 @@ class TestBaseModel(unittest.TestCase):
         self.assertEqual(self.my_model.id, bm.id)
         self.assertDictEqual(self.my_model.to_dict(), bm.to_dict())
         self.assertAlmostEqual(self.my_model.to_dict(), bm.to_dict())
-        self.assertIsInstance(bm.to_dict(), dict)
+        
 
     def test_str_BaseModel(self):
         """ test str function """
@@ -76,6 +76,7 @@ class TestBaseModel(unittest.TestCase):
         d["created_at"] = b.created_at.isoformat()
         d["updated_at"] = b.updated_at.isoformat()
         self.assertAlmostEqual(print(d), print(b.to_dict()))
+        self.assertIsInstance(b.to_dict(), dict)
 
 
     @classmethod

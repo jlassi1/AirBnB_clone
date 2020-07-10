@@ -126,7 +126,7 @@ class HBNBCommand(cmd.Cmd):
 
     def default(self, args):
         """ retrieve input """
-        comm = re.split('[(".,{}" " :)]', args)
+        comm = re.split('[(".,)]', args)
         if comm[0] in self.classs and comm[1] == "all":
             return self.do_all(comm[0])
         if comm[0] in self.classs and comm[1] == "count":

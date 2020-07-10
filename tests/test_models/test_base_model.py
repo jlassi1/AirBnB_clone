@@ -76,10 +76,17 @@ class TestBaseModel(unittest.TestCase):
         d["updated_at"] = b.updated_at.isoformat()
         self.assertEqual(print(d), print(b.to_dict()))
         self.assertIsInstance(b.to_dict(), dict)
+        self.assertTrue(getattr(self.my_model, '__class__'))
+        self.assertTrue(getattr(self.my_model, 'created_at'))
+        self.assertTrue(getattr(self.my_model, 'updated_at'))
+        self.assertTrue(getattr(self.my_model, 'id'))
+        with self.assertRaises(AttributeError):
+            getattr(b, 'bozz')
+        self.my_model.name = 'jamila'
+        self.assertTrue(getattr(self.my_model, 'name'))
         for key, values in self.my_model.to_dict().items():
             if key in ('id', 'created_at', '__class__', 'updated_at'):
                 self.assertIsInstance(self.my_model.to_dict()[key], str)
-
 
     @classmethod
     def tearDownClass(cls):

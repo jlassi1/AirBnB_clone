@@ -50,7 +50,6 @@ class TestBaseModel(unittest.TestCase):
         self.assertEqual(self.my_model.id, bm.id)
         self.assertDictEqual(self.my_model.to_dict(), bm.to_dict())
         self.assertAlmostEqual(self.my_model.to_dict(), bm.to_dict())
-        
 
     def test_str_BaseModel(self):
         """ test str function """
@@ -60,12 +59,12 @@ class TestBaseModel(unittest.TestCase):
         self.assertEqual(s, test)
 
     def test_save_BaseModel(self):
-            """ test save function """
-            b = BaseModel()
-            update_in_create = b.updated_at
-            b.save()
-            update_in_save = b.updated_at
-            self.assertNotEqual(update_in_create, update_in_save)
+        """ test save function """
+        b = BaseModel()
+        update_in_create = b.updated_at
+        b.save()
+        update_in_save = b.updated_at
+        self.assertNotEqual(update_in_create, update_in_save)
 
     def test_to_dict_BaseModel(self):
         """ test to dict funtion """
@@ -77,7 +76,9 @@ class TestBaseModel(unittest.TestCase):
         d["updated_at"] = b.updated_at.isoformat()
         self.assertAlmostEqual(print(d), print(b.to_dict()))
         self.assertIsInstance(b.to_dict(), dict)
-
+        for key, values in self.my_model.to_dict().items():
+            if key in ('id', 'created_at', '__class__', 'updated_at'):
+                self.assertIsInstance(self.my_model.to_dict()[key], str)
 
     @classmethod
     def tearDownClass(cls):

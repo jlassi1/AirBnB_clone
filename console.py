@@ -104,6 +104,12 @@ class HBNBCommand(cmd.Cmd):
         else:
             print("** class doesn't exist **")
 
+    def default(self, args):
+        """ retrieve input """
+        comm = args.split(".")
+        if comm[1] == "all()" and comm[0] in HBNBCommand.classs:
+            return self.do_all(comm[0])
+
     def do_update(self, line):
         """ Updates an instance based on the class name and id """
         comm = shlex.split(line)
@@ -126,11 +132,15 @@ class HBNBCommand(cmd.Cmd):
 
     def default(self, args):
         """ retrieve input """
-        comm = args.split(".")
-        if comm[0] in self.classs and comm[1] == "all()":
+        comm = re.split('[(".)]', args)
+        if comm[0] in self.classs and comm[1] == "all":
             return self.do_all(comm[0])
-        if comm[0] in self.classs and comm[1] == "count()":
+        if comm[0] in self.classs and comm[1] == "count":
             print(len(storage.all()))
+        if comm[0] in self.classs and comm[1] in "show":
+            return self.do_show(comm[0] + " " + comm[2])
+        if comm[0] in self.classs and comm[1] in "destroy":
+            return self.do_destroy(comm[0] + " " + comm[2])
 
 
 if __name__ == '__main__':

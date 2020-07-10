@@ -71,8 +71,8 @@ class TestBaseModel(unittest.TestCase):
         """ test to dict funtion """
 
         b = BaseModel()
-        d = {"__class__": b1.__class__.__name__}
-        d.update(b1.__dict__)
+        d = {"__class__": b.__class__.__name__}
+        d.update(b.__dict__)
         d["created_at"] = b.created_at.isoformat()
         d["updated_at"] = b.updated_at.isoformat()
         self.assertAlmostEqual(print(d), print(b.to_dict()))

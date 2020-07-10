@@ -104,12 +104,6 @@ class HBNBCommand(cmd.Cmd):
         else:
             print("** class doesn't exist **")
 
-    def default(self, args):
-        """ retrieve input """
-        comm = args.split(".")
-        if comm[1] == "all()" and comm[0] in HBNBCommand.classs:
-            return self.do_all(comm[0])
-
     def do_update(self, line):
         """ Updates an instance based on the class name and id """
         comm = shlex.split(line)

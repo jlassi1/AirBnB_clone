@@ -5,7 +5,7 @@ footer {
     bottom: 0;
     position: fixed;
     text-align:center;
-    border-bottom: 1px #CCCCCC;
+    border-bottom: 1px solid #CCCCCC;
 
 }
 p {
